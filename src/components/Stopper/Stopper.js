@@ -2,11 +2,19 @@ import styles from './Stopper.module.scss';
 
 import Button from '../Button/Button';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Stopper = () => {
   const [time, setTime] = useState(0);
   const [timer, setTimer] = useState();
+
+  useEffect(() => {
+    return () => {
+      if (timer) {
+        clearInterval(timer);
+      }
+    };
+  }, []);
 
   const parseTime = time => {
     let hours = 0;
