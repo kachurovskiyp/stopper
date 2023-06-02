@@ -56,6 +56,11 @@ const Stopper = () => {
 
   const handles = {
     start: () => {
+      if (timer) {
+        clearInterval(timer);
+        setTime(0);
+      }
+
       setTimer(setInterval(() => {
         setTime(prevValue => prevValue + 1);
       }, 1));
